@@ -1,0 +1,57 @@
+#root {
+  max-width: 1580px;
+  margin: 0 auto;
+  background-color: #F9F9F9;
+}
+
+
+.navbar-menu {
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+}
+
+.navbar-menu.open {
+  max-height: 500px; /* Or a value that fits your content */
+  opacity: 1;
+}
+
+
+.text-gradient {
+  background: linear-gradient(to right, #47BEBA, #C3E11D); /* Example gradient colors */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+/* Add this to your CSS file */
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+
+.gradient-border {
+  position: relative;
+  border-radius: 12px; /* Adjust the radius as needed */
+  padding: 0.5px; /* Border width */
+  background: linear-gradient(to left, #C3E11D, #E0E0E0);
+  background-clip: border-box;
+}
+
+.border-content {
+  border-radius: inherit;
+  background-color: #fff; /* Background color of the content */
+  transition: all ease 0.3s;
+}
+
+.border-content:hover{
+  background-color: #C3e11D;
+}

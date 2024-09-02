@@ -1,0 +1,53 @@
+import React from 'react';
+import {FeaturesCard} from '../../feature'; // Ensure the correct import path
+import { feature1, feature2, feature3, feature4, feature5, feature6 } from '../../../assets';
+
+const cards = [
+  {
+    title: <>Digital Playbook</>,
+    desc: <>Use digital playbook to design and generate <br /> your own reports.</>,
+    img: feature1,
+  },
+  {
+    title: <>Chat Assistant</>,
+    desc: <>Our chat assistant is available 24/7 to help <br /> you with any query you have in your mind.</>,
+    img: feature2,
+  },
+  {
+    title: <>AI Assessment</>,
+    desc: <>Prepare yourself for AI assessment and go <br /> through some technical evaluation.</>,
+    img: feature3,
+  },
+  {
+    title: <>Automated Reports</>,
+    desc: <>Reports generated will be in different formats <br /> so you can use them according to your will.</>,
+    img: feature4,
+  },
+  {
+    title: <>AI Data Visualization</>,
+    desc: <>Our AI will show you the data in orderly <br /> form and create a complete roadmap.</>,
+    img: feature5,
+  },
+  {
+    title: <>Product Sitemaps & Structure</>,
+    desc: <>Sitemaps & content data structure allows <br /> you to understand your query deeply.</>,
+    img: feature6,
+  },
+];
+
+const Features = () => {
+  return (
+    <div className='px-4 md:px-10 lg:px-20'>
+      <h1 className='font-bold text-2xl lg:text-4xl text-[#00316F] text-center mt-10 mb-6'>
+        Our Features
+      </h1>
+      <div className='grid gap-6 sm:grid-cols-2 lg:grid-cols-3'>
+        {cards.map((x, index) => (
+          <FeaturesCard key={index} title={x.title} desc={x.desc} img={x.img} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Features;
