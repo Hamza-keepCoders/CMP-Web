@@ -4,7 +4,7 @@ import {DottedBg, heroBg, heroBg2, MainBg} from "../../../assets"
 const HeroSection = () => {
   return (
     <div className={`flex flex-col justify-center items-center`}>
-    <img className='absolute z-0 xl:top-24 md:top-28 top-32' src={MainBg} alt="" />
+    <img className='absolute z-10 xl:top-24 md:top-28 top-32' src={MainBg} alt="" />
     <img className='absolute z-0' src={DottedBg} alt="" />
     <div className='flex flex-col justify-center items-center'>
     <h1 className={`bg-[url(${heroBg})] bg-no-repeat bg-center bg-cover lg:py-16 py-5 text-[30px] sm:text-[45px] z-10 md:text-[60px] xl:text-[90px] text-center font-[900] md:leading-[70px] leading-[40px] xl:leading-[90px] flex flex-col my-auto`}>
