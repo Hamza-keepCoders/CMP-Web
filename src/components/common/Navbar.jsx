@@ -1,12 +1,12 @@
-// src/Navbar.js
-import React, { useState } from 'react';
-import { dropdown, Logo, Logo1 } from '../../assets';
-import { FaArrowDown, FaArrowRight, FaArrowUp } from 'react-icons/fa';
+import React, { useState, useEffect, useRef } from 'react';
+import { dropdown, Logo1 } from '../../assets';
+import { FaArrowRight, FaBars, FaTimes } from 'react-icons/fa';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownHomeOpen, setDropdownHomeOpen] = useState(false);
   const [dropdownAboutOpen, setDropdownAboutOpen] = useState(false);
+  const navRef = useRef(null);
 
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
@@ -14,25 +14,42 @@ const Navbar = () => {
 
   const toggleDropdownHome = () => {
     setDropdownHomeOpen(!dropdownHomeOpen);
+    setDropdownAboutOpen(false); // Close About dropdown
   };
 
   const toggleDropdownAbout = () => {
     setDropdownAboutOpen(!dropdownAboutOpen);
+    setDropdownHomeOpen(false); // Close Home dropdown
   };
 
+  // Close dropdowns when clicking outside
+  const handleClickOutside = (event) => {
+    if (navRef.current && !navRef.current.contains(event.target)) {
+      setDropdownHomeOpen(false);
+      setDropdownAboutOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
-    <nav className="navbar">
+    <nav className="navbar" ref={navRef}>
       <div className="navbar-container">
         <img className="navbar-logo" src={Logo1} alt="Logo" />
         <div className="menu-icon" onClick={toggleNavbar}>
-          <i className={isOpen ? 'fas fa-times' : 'fas fa-bars'}></i>
+          {isOpen ? <FaTimes /> : <FaBars />}
         </div>
         <ul className={isOpen ? 'nav-menu active' : 'nav-menu'}>
           <li className="nav-item dropdown">
             <button className="nav-links" onClick={toggleDropdownHome}>
-              Home
+              User Cases
               &nbsp;
-              <img className={dropdownHomeOpen ? 'dropdownrotate' : ''} src={dropdown}/>
+              <img className={dropdownHomeOpen ? 'dropdownrotate' : ''} src={dropdown} alt="dropdown" />
             </button>
             {dropdownHomeOpen && (
               <ul className="dropdown-menu">
@@ -43,8 +60,9 @@ const Navbar = () => {
           </li>
           <li className="nav-item dropdown">
             <button className="nav-links" onClick={toggleDropdownAbout}>
-              About &nbsp;
-              <img className={dropdownAboutOpen ? 'dropdownrotate' : ''} src={dropdown}/>
+              Resources
+              &nbsp;
+              <img className={dropdownAboutOpen ? 'dropdownrotate' : ''} src={dropdown} alt="dropdown" />
             </button>
             {dropdownAboutOpen && (
               <ul className="dropdown-menu">
@@ -54,15 +72,12 @@ const Navbar = () => {
             )}
           </li>
           <li className="nav-item">
-            <a href="#services" className="nav-links">Services</a>
-          </li>
-          <li className="nav-item">
-            <a href="#contact" className="nav-links">Contact</a>
+            <a href="#services" className="nav-links">Pricing Plan</a>
           </li>
         </ul>
         <div className="navbar-buttons">
           <button className="btn">Login</button>
-          <button className="btn btn-primary">Get Started <FaArrowRight/></button>
+          <button className="btn btn-primary">Get Started <FaArrowRight /></button>
         </div>
       </div>
       <style>
@@ -124,11 +139,7 @@ const Navbar = () => {
         }
 
         .nav-links:hover {
-          {/* color: #007bff; */}
-        }
-
-        .nav-links i {
-          margin-left: 5px;
+          /* Optional: Add styles for hover effect if needed */
         }
 
         .navbar-buttons {
@@ -139,7 +150,7 @@ const Navbar = () => {
         .btn {
           padding: 10px 20px;
           border: none;
-          background-color:transparent;
+          background-color: transparent;
           border-radius: 4px;
           color: black;
           cursor: pointer;
@@ -160,7 +171,7 @@ const Navbar = () => {
         }
 
         .btn-primary:hover {
-          {/* background-color: #0056b3; */}
+          /* Optional: Add styles for hover effect if needed */
         }
 
         /* Dropdown styles */
@@ -190,8 +201,14 @@ const Navbar = () => {
           background-color: #575757;
         }
 
-        .dropdown:hover .dropdown-menu {
-          display: block;
+        /* Dropdown visibility controlled via state */
+        .dropdown-menu {
+          display: ${dropdownHomeOpen || dropdownAboutOpen ? 'block' : 'none'};
+        }
+
+        .dropdownrotate {
+          rotate: 180deg;
+          transition: all ease 0.3s;
         }
 
         /* Responsive styles */
@@ -230,10 +247,6 @@ const Navbar = () => {
             display: none; /* Hide buttons on mobile */
           }
         }
-        .dropdownrotate{
-        rotate: 180deg;
-        transition: all ease 0.3s;
-        }
         `}
       </style>
     </nav>
@@ -241,3 +254,7 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
+
+

@@ -7,11 +7,11 @@ const Footer = () => {
     <div className='footer-container'>
       <div className='footer-content'>
         <div>
+          <div className='footer-sections'>
           <div>
             <img className='footer-logo' src={footerLogo} alt="Change.ai Logo" />
             <h2 className='footer-title'>Change.ai</h2>
           </div>
-          <div className='footer-sections'>
             <ul className='footer-section'>
               <li className='footer-section-title'>Product</li>
               <a href="">Login</a>
@@ -100,7 +100,7 @@ const Footer = () => {
 
 @media screen and (min-width:786px){
 .footer-sections {
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   }
 }
 

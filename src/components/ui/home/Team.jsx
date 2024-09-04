@@ -1,5 +1,6 @@
 import React from 'react'
 import { teamslide1, teamslide2, video } from '../../../assets'
+import { FaArrowRight } from 'react-icons/fa'
 
 const Team = () => {
   return (
@@ -11,7 +12,7 @@ const Team = () => {
         </div>
         <div className='slide flex flex-col'>
             <div className='div1'>
-                <button><i className='fa fa-arrow-right'></i></button>
+                <button><FaArrowRight className='rotateIcon'/></button>
                 <h2>4x your data response rate <br/> with generative AI and instant <br/> output formats.</h2>
             </div>
             <div className='div2'>
@@ -72,8 +73,9 @@ const Team = () => {
           .slide button{
           background-color: #C3E11D;
           border-radius: 9999px;
-          padding: 10px 14px;
+          padding: 10px 12px;
           position: absolute;
+          border: none;
           right: 15px;
           top: 15px;
           }
@@ -102,6 +104,11 @@ const Team = () => {
           display:flex;
           flex-direction: column;
           gap: 30px;
+          }
+          .rotateIcon{
+          rotate: -50deg;
+          color: white;
+          font-size:20px;
           }
 
         `}
