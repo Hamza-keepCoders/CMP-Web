@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaArrowRight, FaArrowUp } from 'react-icons/fa';
 
 const Accordian = (props) => {
     const [open, setOpen] = React.useState(props.count === 1 ? props.count : 0);
@@ -12,7 +13,7 @@ const Accordian = (props) => {
                 onClick={() => handleOpen(props.count)}
             >
                 {props.title}
-                <Icon id={props.count} open={open} />
+                <FaArrowRight className={open ? 'icon-rotate' : ''} id={props.count} open={open} />
             </div>
             <div className={`accordion-body ${open === props.count ? 'open' : ''}`}>
                 {props.desc}
@@ -54,8 +55,9 @@ const Accordian = (props) => {
   transition: transform 0.3s ease-out;
 }
 
-.icon.rotate {
+.icon-rotate {
   transform: rotate(90deg);
+  transition: all ease 0.5s;
 }
               `}
 

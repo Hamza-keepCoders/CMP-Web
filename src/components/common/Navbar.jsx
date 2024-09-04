@@ -1,6 +1,7 @@
 // src/Navbar.js
 import React, { useState } from 'react';
-import { Logo, Logo1 } from '../../assets';
+import { dropdown, Logo, Logo1 } from '../../assets';
+import { FaArrowDown, FaArrowRight, FaArrowUp } from 'react-icons/fa';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,7 +31,8 @@ const Navbar = () => {
           <li className="nav-item dropdown">
             <button className="nav-links" onClick={toggleDropdownHome}>
               Home
-              <i className={`fas ${dropdownHomeOpen ? 'fa-chevron-up' : 'fa-chevron-down'}`}></i>
+              &nbsp;
+              <img className={dropdownHomeOpen ? 'dropdownrotate' : ''} src={dropdown}/>
             </button>
             {dropdownHomeOpen && (
               <ul className="dropdown-menu">
@@ -41,8 +43,8 @@ const Navbar = () => {
           </li>
           <li className="nav-item dropdown">
             <button className="nav-links" onClick={toggleDropdownAbout}>
-              About
-              <i className={`fas ${dropdownAboutOpen ? 'fa-chevron-up' : 'fa-chevron-down'}`}></i>
+              About &nbsp;
+              <img className={dropdownAboutOpen ? 'dropdownrotate' : ''} src={dropdown}/>
             </button>
             {dropdownAboutOpen && (
               <ul className="dropdown-menu">
@@ -60,7 +62,7 @@ const Navbar = () => {
         </ul>
         <div className="navbar-buttons">
           <button className="btn">Login</button>
-          <button className="btn btn-primary">Get Started</button>
+          <button className="btn btn-primary">Get Started <FaArrowRight/></button>
         </div>
       </div>
       <style>
@@ -137,6 +139,7 @@ const Navbar = () => {
         .btn {
           padding: 10px 20px;
           border: none;
+          background-color:transparent;
           border-radius: 4px;
           color: black;
           cursor: pointer;
@@ -147,6 +150,9 @@ const Navbar = () => {
           background-color: #C3E11D;
           padding: 0 30px;
           border-radius: 200px;
+          display: flex;
+          align-items: center;
+          gap: 5px;
         }
 
         .btn:hover {
@@ -154,7 +160,7 @@ const Navbar = () => {
         }
 
         .btn-primary:hover {
-          background-color: #0056b3;
+          {/* background-color: #0056b3; */}
         }
 
         /* Dropdown styles */
@@ -223,6 +229,10 @@ const Navbar = () => {
           .navbar-buttons {
             display: none; /* Hide buttons on mobile */
           }
+        }
+        .dropdownrotate{
+        rotate: 180deg;
+        transition: all ease 0.3s;
         }
         `}
       </style>

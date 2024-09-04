@@ -49,7 +49,7 @@ const Features = () => {
       <style>
         {`
         .feature{
-        padding: 30px;
+        padding: 30px 100px;
         }
         .feature h1{
         font-weight: bold;
@@ -66,6 +66,9 @@ const Features = () => {
         @media screen and (max-width: 768px) {
          .feature div{
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          }
+          .feature{
+          padding: 30px 50px;
           }
         }
         `}

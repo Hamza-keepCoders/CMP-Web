@@ -22,10 +22,13 @@ const FeaturesCard = (props) => {
   padding: 1rem 1rem; /* py-6 px-4 */
   background-color: #ffffff;
   transition: all 0.3s ease;
+  box-shadow: 0px 0px 1px black;
 }
 
 .featurecard:hover {
   background-color: #c3e11d;
+  box-shadow: 0px 0px 5px gray;
+  scale: 1.01;
 }
 
 .featurecard img {

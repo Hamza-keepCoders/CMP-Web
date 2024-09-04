@@ -1,5 +1,6 @@
 import React from 'react';
 import { footerLogo } from '../../assets';
+import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -51,9 +52,9 @@ const Footer = () => {
             <a href="#">Terms of Service</a>
           </div>
           <div className='footer-socials'>
-            <a href="#" className='text-xl md:text-2xl'><i className='fa-brands fa-facebook'></i></a>
-            <a href="#" className='text-xl md:text-2xl'><i className='fa-brands fa-instagram'></i></a>
-            <a href="#" className='text-xl md:text-2xl'><i className='fa-brands fa-twitter'></i></a>
+            <a href="#" className='text-xl md:text-2xl'><FaFacebook color='black'/></a>
+            <a href="#" className='text-xl md:text-2xl'><FaInstagram color='black'/></a>
+            <a href="#" className='text-xl md:text-2xl'><FaTwitter color='black'/></a>
           </div>
         </div>
       </div>
@@ -73,13 +74,15 @@ const Footer = () => {
 }
 .footer-logo {
   background-color: #C3E11D;
-  padding: 1rem;
+  padding: 1rem 0.5rem;
+  margin-left: 1.5rem;
   border-radius: 10px;
-  margin-bottom: 1rem;
 }
 
 .footer-title {
   font-size: 2.5rem;
+  margin-top: -0.4rem;
+  margin-left: 1.5rem;
   font-weight: bold;
 }
 
@@ -117,6 +120,7 @@ const Footer = () => {
 
 .footer-section a {
   text-decoration: none;
+  color: black;
   transition: color 0.2s ease;
 }
 
@@ -129,7 +133,6 @@ const Footer = () => {
   justify-content: space-between;
   align-items: center;
   padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
   border-top: 2px solid #ddd;
 }
 

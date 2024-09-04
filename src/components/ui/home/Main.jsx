@@ -5,15 +5,15 @@ import { MainImg, MainImg2, MainImg3 } from '../../../assets';
 const cards = [
   {
     title: 'Digital Playbook',
-    desc: <>Lorem Ipsum Dolor min halt darim komp din harty walar yip patt baraan min skat</>,
+    desc: <>A digital playbook that generates sitemaps and wireframes is a strategic tool that streamlines the planning and design process, ensuring consistent and efficient website development.</>,
   },
   {
     title: 'AI Assessment',
-    desc: <>Lorem Ipsum Dolor min halt darim komp din harty walar yip patt baraan min skat</>,
+    desc: <>An AI assessment tool that generates questionnaires and tests for users automates and personalizes the evaluation process, enhancing accuracy and efficiency in measuring skills and knowledge.</>,
   },
   {
     title: 'AI Assistant',
-    desc: <>Lorem Ipsum Dolor min halt darim komp din harty walar yip patt baraan min skat</>,
+    desc: <>An AI assistant integrated into a digital playbook helps users efficiently navigate and complete tasks, providing real-time support and guidance throughout the process.</>,
   },
 ]
 

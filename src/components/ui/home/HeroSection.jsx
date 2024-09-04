@@ -1,5 +1,6 @@
 import React from 'react'
 import {DottedBg, heroBg, heroBg2, MainBg} from "../../../assets"
+import { FaArrowRight } from 'react-icons/fa'
 
 const HeroSection = () => {
   return (
@@ -11,7 +12,7 @@ const HeroSection = () => {
             Transforming the <br /> future of <br /> Documentation
         </h1>
         <button class="demo-button">
-            Get Free Demo <i class="fa fa-arrow-right rotate-icon"></i>
+            Get Free Demo <FaArrowRight className='rotate-icon'/>
         </button>
     </div>
     <style>

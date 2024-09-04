@@ -37,7 +37,7 @@ h1 {
 }
 
 h5 {
-  font-size: 16px;
+  font-size: 12px;
 }
 
 .card:hover {
