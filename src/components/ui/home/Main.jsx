@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { MainCard } from "../../feature";
 import { MainImg, MainImg2, MainImg3 } from '../../../assets';
 
-
 const cards = [
   {
     title: 'Digital Playbook',
@@ -19,22 +18,18 @@ const cards = [
 ]
 
 const Main = () => {
-  // State to track the currently hovered card
   const [hoveredCard, setHoveredCard] = useState(null);
 
-  // Function to handle mouse enter event
   const handleMouseEnter = (card) => {
-    console.log(`Mouse entered: ${card}`); // Debugging log
+    console.log(`Mouse entered: ${card}`);
     setHoveredCard(card);
   };
 
-  // Function to handle mouse leave event
   const handleMouseLeave = () => {
     console.log('Mouse left');
     setHoveredCard(null);
   };
 
-  // Determine the image to display based on the hovered card
   const getImage = () => {
     switch (hoveredCard) {
       case 'Digital Playbook':
@@ -49,26 +44,110 @@ const Main = () => {
   };
 
   return (
-    <div className='mt-[100px] sm:mt-[250px] lg:mt-[400px]'>
-      <h1 className='lg:text-[40px] md:block hidden text-[30px] text-center font-semibold mb-14'>
-        Develop your documentation <br /> at <span className='text-gradient font-bold'>Change AI</span>
-      </h1>
-      <h1 className='md:hidden text-[25px] text-center font-semibold mb-14'>
+    <div className='main-container'>
+      <h1 className='heading-small hidden lg:block'>
         Develop your documentation at <span className='text-gradient font-bold'>Change AI</span>
       </h1>
-      <div className='grid w-[80%] mx-auto lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-[25px]'>
-        {cards.map((x)=>(
+      <div className='card-grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+        {cards.map((x) => (
           <MainCard
-          title={x.title}
-          desc={x.desc}
-          onMouseEnter={() => handleMouseEnter(x.title)}
-          onMouseLeave={handleMouseLeave}
-        />
+            title={x.title}
+            desc={x.desc}
+            onMouseEnter={() => handleMouseEnter(x.title)}
+            onMouseLeave={handleMouseLeave}
+            key={x.title}
+          />
         ))}
       </div>
-      <div className='flex justify-center mt-20'>
-        <img className='w-[70%] rounded-3xl shadow-md' src={getImage()} alt="Main visual" />
+      <div className='image-container'>
+        <img src={getImage()} alt="Main visual" />
       </div>
+      <style>
+        {`
+        .main-container {
+  margin-top: 100px;
+}
+
+@media (min-width: 640px) {
+  .main-container {
+    margin-top: 250px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .main-container {
+    margin-top: 400px;
+  }
+}
+
+/* Headings */
+.heading-large {
+  font-size: 40px;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 56px;
+}
+
+.heading-medium {
+  font-size: 30px;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 56px;
+}
+
+.heading-small {
+  font-size: 25px;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 56px;
+}
+
+/* Text gradient */
+.text-gradient {
+  background: linear-gradient(to right, #ff7e5f, #feb47b); /* Adjust colors as needed */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Grid layout */
+.card-grid {
+  width: 80%;
+  margin: auto;
+  display: grid;
+  gap: 25px;
+}
+
+.card-grid.grid-cols-1 {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 786px) {
+  .card-grid.grid-cols-1 {
+  grid-template-columns: repeat(2, 1fr);
+}
+}
+
+@media (min-width: 1024px) {
+  .card-grid.grid-cols-1 {
+  grid-template-columns: repeat(3, 1fr);
+}
+}
+
+
+/* Image container */
+.image-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.image-container img {
+  width: 70%;
+  border-radius: 24px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adjust shadow as needed */
+}
+        `}
+      </style>
     </div>
   );
 };

@@ -37,7 +37,7 @@ const cards = [
 
 const Features = () => {
   return (
-    <div className='px-4 md:px-10 lg:px-20'>
+    <div className='feature px-4 md:px-10 lg:px-20'>
       <h1 className='font-bold text-2xl lg:text-4xl text-[#00316F] text-center mt-10 mb-6'>
         Our Features
       </h1>
@@ -46,6 +46,30 @@ const Features = () => {
           <FeaturesCard key={index} title={x.title} desc={x.desc} img={x.img} />
         ))}
       </div>
+      <style>
+        {`
+        .feature{
+        padding: 30px;
+        }
+        .feature h1{
+        font-weight: bold;
+        font-size:25px;
+        color: #00316F;
+        text-align: center;
+        margin: 15px 0;
+        }
+        .feature div{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap:20px;
+        }
+        @media screen and (max-width: 768px) {
+         .feature div{
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          }
+        }
+        `}
+      </style>
     </div>
   );
 };

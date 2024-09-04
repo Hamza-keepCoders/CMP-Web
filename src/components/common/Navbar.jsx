@@ -1,155 +1,231 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { dropdown, Logo, Logo1 } from '../../assets';
+// src/Navbar.js
+import React, { useState } from 'react';
+import { Logo, Logo1 } from '../../assets';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(null);
+  const [dropdownHomeOpen, setDropdownHomeOpen] = useState(false);
+  const [dropdownAboutOpen, setDropdownAboutOpen] = useState(false);
 
-  // Effect to handle window resize
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 768) {
-        // Reset dropdown state when switching to desktop view
-        setIsOpen(false);
-        setDropdownOpen(null);
-      }
-    };
+  const toggleNavbar = () => {
+    setIsOpen(!isOpen);
+  };
 
-    window.addEventListener('resize', handleResize);
-    
-    // Call handler right away so state is updated with initial window size
-    handleResize();
+  const toggleDropdownHome = () => {
+    setDropdownHomeOpen(!dropdownHomeOpen);
+  };
 
-    // Cleanup listener on component unmount
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  const handleDropdownToggle = (dropdownName) => {
-    setDropdownOpen(prev => (prev === dropdownName ? null : dropdownName));
+  const toggleDropdownAbout = () => {
+    setDropdownAboutOpen(!dropdownAboutOpen);
   };
 
   return (
-    <nav className="bg-transparent py-4">
-      <div className="mx-auto flex items-center justify-between">
-        {/* Left side logo */}
-        <div className="flex-shrink-0 z-10">
-          <Link to="/">
-            <img src={Logo1} alt="Logo" className="py-3 px-1 bg-[#C3E11D] rounded-[8px] md:w-[100%] w-[40px]" />
-          </Link>
+    <nav className="navbar">
+      <div className="navbar-container">
+        <img className="navbar-logo" src={Logo1} alt="Logo" />
+        <div className="menu-icon" onClick={toggleNavbar}>
+          <i className={isOpen ? 'fas fa-times' : 'fas fa-bars'}></i>
         </div>
-
-        {/* Hamburger Icon */}
-        <div className="md:hidden z-10 flex items-center">
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="text-black focus:outline-none"
-          >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
-            </svg>
-          </button>
-        </div>
-
-        {/* Center links (desktop) */}
-        <div className="hidden md:flex z-10 flex-grow justify-center space-x-16 font-semibold text-md">
-          <div className="relative">
-            <button
-              onClick={() => handleDropdownToggle('userCases')}
-              className="flex gap-1 items-center hover:text-gray-500"
-            >
-              User Cases
-              <img src={dropdown} alt="" className="ml-1" />
+        <ul className={isOpen ? 'nav-menu active' : 'nav-menu'}>
+          <li className="nav-item dropdown">
+            <button className="nav-links" onClick={toggleDropdownHome}>
+              Home
+              <i className={`fas ${dropdownHomeOpen ? 'fa-chevron-up' : 'fa-chevron-down'}`}></i>
             </button>
-            {dropdownOpen === 'userCases' && (
-              <div className="absolute top-full mt-2 bg-gray-700 text-white rounded-lg shadow-lg">
-                <Link to="/case1" className="block px-4 py-2 hover:bg-gray-600">Case 1</Link>
-                <Link to="/case2" className="block px-4 py-2 hover:bg-gray-600">Case 2</Link>
-                <Link to="/case3" className="block px-4 py-2 hover:bg-gray-600">Case 3</Link>
-              </div>
+            {dropdownHomeOpen && (
+              <ul className="dropdown-menu">
+                <li><a href="#home-sub1" className="dropdown-link">Sub Link 1</a></li>
+                <li><a href="#home-sub2" className="dropdown-link">Sub Link 2</a></li>
+              </ul>
             )}
-          </div>
-          <div className="relative">
-            <button
-              onClick={() => handleDropdownToggle('resources')}
-              className="flex gap-1 items-center hover:text-gray-500"
-            >
-              Resources
-              <img src={dropdown} alt="" className="ml-1" />
+          </li>
+          <li className="nav-item dropdown">
+            <button className="nav-links" onClick={toggleDropdownAbout}>
+              About
+              <i className={`fas ${dropdownAboutOpen ? 'fa-chevron-up' : 'fa-chevron-down'}`}></i>
             </button>
-            {dropdownOpen === 'resources' && (
-              <div className="absolute top-full mt-2 bg-gray-700 text-white rounded-lg shadow-lg">
-                <Link to="/resource1" className="block px-4 py-2 hover:bg-gray-600">Resource 1</Link>
-                <Link to="/resource2" className="block px-4 py-2 hover:bg-gray-600">Resource 2</Link>
-                <Link to="/resource3" className="block px-4 py-2 hover:bg-gray-600">Resource 3</Link>
-              </div>
+            {dropdownAboutOpen && (
+              <ul className="dropdown-menu">
+                <li><a href="#about-sub1" className="dropdown-link">Sub Link 1</a></li>
+                <li><a href="#about-sub2" className="dropdown-link">Sub Link 2</a></li>
+              </ul>
             )}
-          </div>
-          <Link to="/pricing" className="hover:text-gray-500">Pricing Plan</Link>
-        </div>
-
-        {/* Right side buttons (desktop) */}
-        <div className="hidden z-10 md:flex space-x-2 font-semibold">
-          <button className="px-4 py-2">
-            Login
-          </button>
-          <button className="bg-[#C3E11D] px-5 py-2 rounded-full">
-            Get Started
-          </button>
+          </li>
+          <li className="nav-item">
+            <a href="#services" className="nav-links">Services</a>
+          </li>
+          <li className="nav-item">
+            <a href="#contact" className="nav-links">Contact</a>
+          </li>
+        </ul>
+        <div className="navbar-buttons">
+          <button className="btn">Login</button>
+          <button className="btn btn-primary">Get Started</button>
         </div>
       </div>
+      <style>
+        {`
+        .navbar {
+          height: 60px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-weight: 600;
+          position: relative;
+          padding: 10px 20px;
+          z-index: 1000;
+        }
 
-      {/* Dropdown menu (mobile) */}
-      <div className={`md:hidden z-10 ${isOpen ? 'block' : 'hidden'} bg-gray-700`}>
-        <div className="flex flex-col items-center space-y-2 py-4">
-          <Link to="/" className="text-white hover:text-gray-300">Home</Link>
-          <div className="relative">
-            <button
-              onClick={() => handleDropdownToggle('userCases')}
-              className="flex gap-1 items-center text-white hover:text-gray-300"
-            >
-              User Cases
-              <img src={dropdown} alt="" className="ml-1" />
-            </button>
-            {dropdownOpen === 'userCases' && (
-              <div className="absolute top-full mt-2 bg-gray-600 text-white rounded-lg shadow-lg">
-                <Link to="/case1" className="block px-4 py-2 hover:bg-gray-500">Case 1</Link>
-                <Link to="/case2" className="block px-4 py-2 hover:bg-gray-500">Case 2</Link>
-                <Link to="/case3" className="block px-4 py-2 hover:bg-gray-500">Case 3</Link>
-              </div>
-            )}
-          </div>
-          <div className="relative">
-            <button
-              onClick={() => handleDropdownToggle('resources')}
-              className="flex gap-1 items-center text-white hover:text-gray-300"
-            >
-              Resources
-              <img src={dropdown} alt="" className="ml-1" />
-            </button>
-            {dropdownOpen === 'resources' && (
-              <div className="absolute top-full mt-2 bg-gray-600 text-white rounded-lg shadow-lg">
-                <Link to="/resource1" className="block px-4 py-2 hover:bg-gray-500">Resource 1</Link>
-                <Link to="/resource2" className="block px-4 py-2 hover:bg-gray-500">Resource 2</Link>
-                <Link to="/resource3" className="block px-4 py-2 hover:bg-gray-500">Resource 3</Link>
-              </div>
-            )}
-          </div>
-          <Link to="/pricing" className="text-white hover:text-gray-300">Pricing Plan</Link>
-          <button className=" text-white z-10 px-4 py-2">
-            Login
-          </button>
-          <button className="bg-[#C3E11D] z-10 px-5 py-2 rounded-full">
-            Get Started
-          </button>
-        </div>
-      </div>
+        .navbar-container {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+        }
+
+        .navbar-logo {
+          color: black;
+          cursor: pointer;
+          background-color: #C3E11D;
+          padding: 10px 3px;
+          border-radius: 10px;
+        }
+
+        .menu-icon {
+          display: none;
+        }
+
+        .nav-menu {
+          display: flex;
+          flex: 1;
+          justify-content: center;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+
+        .nav-item {
+          position: relative;
+          margin: 0 30px;
+        }
+
+        .nav-links {
+          text-decoration: none;
+          font-size: 1rem;
+          color: black;
+          background: none;
+          border: none;
+          cursor: pointer;
+          position: relative;
+          display: flex;
+          align-items: center;
+        }
+
+        .nav-links:hover {
+          {/* color: #007bff; */}
+        }
+
+        .nav-links i {
+          margin-left: 5px;
+        }
+
+        .navbar-buttons {
+          display: flex;
+          gap: 10px;
+        }
+
+        .btn {
+          padding: 10px 20px;
+          border: none;
+          border-radius: 4px;
+          color: black;
+          cursor: pointer;
+          font-size: 0.9rem;
+        }
+
+        .btn-primary {
+          background-color: #C3E11D;
+          padding: 0 30px;
+          border-radius: 200px;
+        }
+
+        .btn:hover {
+          opacity: 0.9;
+        }
+
+        .btn-primary:hover {
+          background-color: #0056b3;
+        }
+
+        /* Dropdown styles */
+        .dropdown-menu {
+          display: none;
+          position: absolute;
+          top: 150%;
+          width: 200%;
+          left: -30px;
+          background: #333;
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          border-radius: 4px;
+          box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+          z-index: 1000;
+        }
+
+        .dropdown-menu .dropdown-link {
+          display: block;
+          padding: 10px 20px;
+          color: white;
+          text-decoration: none;
+        }
+
+        .dropdown-menu .dropdown-link:hover {
+          background-color: #575757;
+        }
+
+        .dropdown:hover .dropdown-menu {
+          display: block;
+        }
+
+        /* Responsive styles */
+        @media screen and (max-width: 768px) {
+          .menu-icon {
+            display: block;
+            font-size: 1.5rem;
+            cursor: pointer;
+          }
+
+          .nav-menu {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            background: #333;
+            z-index: 999;
+          }
+
+          .nav-menu.active {
+            display: flex;
+          }
+
+          .nav-item {
+            margin: 10px 0;
+          }
+
+          .dropdown-menu {
+            position: static;
+            background: #333;
+          }
+
+          .navbar-buttons {
+            display: none; /* Hide buttons on mobile */
+          }
+        }
+        `}
+      </style>
     </nav>
   );
 };

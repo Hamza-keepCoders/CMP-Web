@@ -47,21 +47,66 @@ const accordianData = [
 
 const FAQs = () => {
   return (
-    <div className='mt-20 mb-20'>
-      <div className='flex flex-col items-center text-center text-[40px] font-[600]'>
+    <div className='faqs'>
+      <div className='faq1'>
         <img src={faqsLogo} alt="" />
         <h2>Frequently Asked Questions.</h2>
       </div>
-      <div className='md:w-[70%] mx-auto mt-20'>
+      <div className='faq2'>
         {accordianData.map((item) => (
           <Accordian key={item.count} title={item.title} desc={item.desc} count={item.count} />
         ))}
       </div>
-      <div className='flex flex-col justify-center items-center text-center font-[600] mt-10'>
-      <h1 className='text-[40px]'>Need Personal Assistance?</h1>
-      <h5 className='text-[12px] font-[300] my-5'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore <br /> magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut <br /> labore et dolore magna aliqua.</h5>
-      <button className='bg-[#B4FF00] rounded-full py-[10px] px-[53px] text-[20px] font-[500]'>Contact Us</button>
+      <div className='faq3'>
+      <h1>Need Personal Assistance?</h1>
+      <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore <br /> magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut <br /> labore et dolore magna aliqua.</h5>
+      <button>Contact Us</button>
     </div>
+    <style>
+      {`
+      .faqs{
+      margin: 50px 0;
+      }
+      .faq1{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      font-size: 40px;
+      font-weight: 600;
+      }
+      .faq2{
+      width: 70%;
+      margin:0 auto;
+      margin-top: 50px;
+      }
+      .faq3{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 40px;
+      font-weight: 600;
+      margin-top: 20px;
+      }
+      .faq3 h1{
+      font-size: 40px;
+      }
+      .faq3 h5{
+      font-size: 12px;
+      font-weight: 300;
+      margin: 10px 0;
+      }
+      .faq3 button{
+      background-color: #b4ff00;
+      border-radius: 999px;
+      padding: 10px 53px;
+      font-size: 20px;
+      font-weight: 500;
+      }
+      `}
+    </style>
     </div>
   );
 }

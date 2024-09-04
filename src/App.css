@@ -2,7 +2,32 @@
   max-width: 1580px;
   margin: 0 auto;
   background-color: #F9F9F9;
+  font-family: Inter var,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .navbar-menu {
@@ -35,23 +60,4 @@
 .card:hover {
   transform: scale(1.02);
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-
-
-.gradient-border {
-  position: relative;
-  border-radius: 12px; /* Adjust the radius as needed */
-  padding: 0.5px; /* Border width */
-  background: linear-gradient(to left, #C3E11D, #E0E0E0);
-  background-clip: border-box;
-}
-
-.border-content {
-  border-radius: inherit;
-  background-color: #fff; /* Background color of the content */
-  transition: all ease 0.3s;
-}
-
-.border-content:hover{
-  background-color: #C3e11D;
 }
